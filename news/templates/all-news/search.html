@@ -1,0 +1,28 @@
+{%extends 'all-news/base.html'%} 
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if menu%}
+      <h2>Found {{ menu|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 menus for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if menu %}
+    {% for menus in menu %}
+      <div class="col-sm-6 col-md-3">
+          <h1>{{menus.Location}}</h1>
+          <h1>{{menus.name}}</h1>
+          <img src="{{menus.menu_image.url}}" class="img-responsive" alt="Image">
+       
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>
+{% endblock %}

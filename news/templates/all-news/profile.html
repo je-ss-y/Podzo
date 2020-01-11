@@ -1,0 +1,70 @@
+{%extends 'all-news/base.html'%}
+{% load static%}
+
+{% block content %}
+{{block.super}}
+<header>
+<div class="container" style="position:relative ">
+  <img style="width:1500px ;background-size: cover" alt="miam" src="{% static 'css/images/resto_bg.png'%}" />
+  <div class="centered " style="position:absolute; top:20%;left:20%;" ><h1 style="color:white">Kugasima caffee</h1></div>
+ 
+  <div class="top-left" style="position:absolute;top: 15%;left:10%;"><img width="100"  alt="miam" src="{% static 'css/images/restaurant.png'%}" />
+  </div>
+</div>
+</header>
+<br>
+<br>
+
+
+<body style="background-color: #f5fafc;">
+    <!-- Looping through news   -->
+    
+    {% for all in profile %}
+  
+
+
+
+    <!-- displaying News articles -->
+    <div class="card" style="width:250px; height:250px ; display:flex; position:relative;text-align:center;justify-content: center;">
+       
+        <h2 > {{ all.name }} </h2>
+      <h2> {{ all.location }} </h2>
+    </div>
+      <br>
+      <br>
+      {% endfor %}
+
+      <div class="container">
+
+        <!-- Looping through news   -->
+        {% for one in details %}
+      
+    
+    
+      <div class="row">
+        <!-- displaying News articles -->
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        
+          <h2 class="text-center"> {{ one.menu_name }} </h2>
+          <h2 class="text-center"> {{ one.price }} </h2>
+          <br>
+          <br>
+       
+        </div>
+    
+      
+      </div>
+      {% endfor %}
+      
+      </div>
+
+  
+ 
+  
+  
+
+
+</body>
+
+
+  {% endblock %}

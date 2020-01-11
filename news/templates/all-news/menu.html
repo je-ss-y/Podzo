@@ -1,0 +1,29 @@
+{%extends 'all-news/base.html'%}
+{% load static%}
+
+{% block content %}
+{{block.super}}
+
+<div class="container">
+
+    <!-- Looping through news   -->
+    {% for menus in menu %}
+  
+
+
+
+    <!-- displaying News articles -->
+    <div class="card" style="width:250px; height:250px ; display:flex; position:relative;text-align:center;justify-content: center;">
+       
+        <h2 > {{ menus.menu_name }} </h2>
+      <h2> {{ menus.price }} </h2>
+    </div>
+      <br>
+      <br>
+      {% endfor %}
+
+      
+
+  </div>
+
+  {% endblock %}
