@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -6,8 +7,7 @@ class Editor(models.Model):
     first_name = models.CharField(max_length =30)
     last_name = models.CharField(max_length =30)
     email = models.EmailField()
-    location = models.TextField()
-
+    
     def __str__(self):
         return self.first_name
 
@@ -24,6 +24,8 @@ class Restaurants(models.Model):
     name = models.CharField(max_length =60)
     post = models.TextField()
     editor = models.ForeignKey(Editor)
+    location = models.TextField()
+
     
 
     menu_image = models.ImageField(upload_to = 'menus/')
@@ -58,9 +60,7 @@ class Menu(models.Model):
     restaurants = models.ForeignKey(Restaurants, null=True)
     price= models.CharField(max_length =30)
     
-    
-    
-    
+
 
     def __str__(self):
         return self.menu_name
@@ -73,3 +73,17 @@ class Menu(models.Model):
     def editor_menu(cls):
         details = cls.objects.all
         return details
+
+
+class Comment(models.Model):
+    comment = models.TextField()
+    resto = models.ForeignKey(Restaurants, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return self.comment
+
+    
+    
+    

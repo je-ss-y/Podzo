@@ -7,6 +7,7 @@ urlpatterns=[
     url('^$',views.menu_of_day,name='menuToday'),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^profile/', views.all, name='all'),
+    url(r'^comment/(?P<restaurant_id>\d+)$', views.commenting, name='comment'),
     # url(r'^details/', views.menu, name='menu')
     # url(r'^profile/', views.editor, name='editor')
    

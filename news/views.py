@@ -1,6 +1,10 @@
 from django.shortcuts import render
 
 from .models import *
+from django.contrib.auth.decorators import login_required
+from .forms import CommentForm
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 from django.http  import HttpResponse
@@ -25,7 +29,7 @@ def menu_of_day(request):
 #     # Returning the actual day of the week
 #     day = days[day_number]
 #     return day
-
+@login_required(login_url='/accounts/login/')
 def search_results(request):
 
     if 'menu' in request.GET and request.GET["menu"]:
@@ -61,6 +65,29 @@ def all(request):
 #     details = Menu.editor_menu()
 #     # profile = Editor.objects.filter(id=id).first()
 #     return render(request, 'all-news/profile.html', {"details": details})
+
+
+
+@login_required(login_url='/accounts/login/')
+def commenting(request,restaurants_id):
+    current_user = request.user
+    if request.method == 'POST':
+        restauranttocomment = Restaurants.objects.filter(id = restaurants_id).first()
+        # user = User.objects.filter(user = current_user.id).first()
+        # print(user)
+        form =  CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user= current_user
+            comment.image =restauranttocomment
+            comment.save()
+            
+        return redirect('menuToday')
+
+    else:
+        form = CommentForm()
+    return render(request, 'all-news/comment-form.html', {"form": form, 'restaurants_id':restaurants_id})
+
 
 
 

@@ -27,44 +27,50 @@
 <link rel="stylesheet" href="css/responsive.css">
 
 <!-- Highlight Card -->
-<header class="container">
 
-  <span>
-    <img width="1300" position="relative" alt="miam" src="{% static 'css/images/background.png'%}" />
-  </span>
 
-  <!-- Adding a search form  -->
-  <div class=" navbar-right" style="padding-left: 500px;width:900px">
 
-    <form class="navbar-form" role="search" action="{% url 'search_results' %}">
 
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Restaurants" name="menu">
-        <div class="input-group-btn">
-          <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-        </div>
+<header class="masthead text-white text-center" >
+  <img width="1300" position="relative" alt="miam" src="{% static 'css/images/background.png'%}"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <h1 class="mb-5" >Get instant access to your favorite cuisine</h1>
       </div>
-
-    </form>
+      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        <form action="{% url 'search_results' %}">
+          <div class="form-row">
+            <div class="col-12 col-md-9 mb-2 mb-md-0">
+              <input type="search" class="form-control form-control-lg" placeholder="what dishes are you looking for?" name="service">
+            </div>
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-  <!-- search form end -->
+</header><br><br>
 
-</header>
 
 <div class="blue-back" style="background-color: #f5fafc; text-align: center;">
 
   <h2 style="text-align: center;">Our Restaurants</h2>
-  <hr style="border:1px solid ;background-color:black;width:7%;margin-left:46%;scroll-margin-bottom: 10%">
-  <div class=" card-container">
+  <hr style="border:1px solid ;background-color:black;width:7%;">
+  <div class=" container">
+     <div class="row">
+
     <!-- Looping through news   -->
     {% for menu_item in menu %}
 
-
-
+    <div class="col-md-4">
+   
 
     <!-- displaying News articles -->
-    <div class="row">
-      <div class="column">
+  
+  
         <a href="{%url 'all'%}">
           <img src="{{menu_item.menu_image.url}}" class="img-responsive" alt="Image"
             style="width:30%;background-color:#ff6000 ; width:200px">

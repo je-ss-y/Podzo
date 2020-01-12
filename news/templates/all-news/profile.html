@@ -18,35 +18,41 @@
 
 <body style="background-color: #f5fafc;">
     <!-- Looping through news   -->
+
+
+  
     
+<hr style="width:190%">
+<div class="container">
+  <div class="row">
     {% for all in profile %}
   
 
 
 
     <!-- displaying News articles -->
-    <div class="card" style="width:250px; height:250px ; display:flex; position:relative;text-align:center;justify-content: center;">
-       
+    <div class="col-md-4" style="margin-top: 5%;"><br><br>
+    
         <h2 > {{ all.name }} </h2>
-      <h2> {{ all.location }} </h2>
+      <a href="http://maps.google.com/maps?q={{s.location}}"> <h2>{{ all.location }} </h2></a>
     </div>
       <br>
       <br>
       {% endfor %}
 
-      <div class="container">
+      <div class="col-md-4"  style="width:250px ; height:250px ;margin-top:5% ; display:flex; justify-content:right ">
 
         <!-- Looping through news   -->
         {% for one in details %}
       
     
     
-      <div class="row">
+      <div class="card"  style="width:90%">
         <!-- displaying News articles -->
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    
         
-          <h2 class="text-center"> {{ one.menu_name }} </h2>
-          <h2 class="text-center"> {{ one.price }} </h2>
+          <h2 > {{ one.menu_name }} </h2>
+          <h2 > {{ one.price }} </h2>
           <br>
           <br>
        
@@ -55,11 +61,12 @@
       
       </div>
       {% endfor %}
-      
-      </div>
 
+      </div>
+      <br>
+    </div>
   
- 
+ </div>
   
   
 
